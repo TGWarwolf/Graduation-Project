@@ -1,0 +1,61 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>参与投票</title>
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/page.css')}}" />
+</head>
+ 
+<body>
+<div id="headline">	
+	<ul>
+    <li><a href="/">首页</a></li>
+    <li><a href="/participate">进行中的投票</a></li>
+    <li><a href="/">关于</a></li>
+	{% if user == "guest" %}
+    <li class="user_info"><a href="/login" >登陆</a></li>
+	{% else %}
+	<li class="user_info"><a href="/logout">用户{{user}}，您好!点此登出</a></li>
+	{% endif %}
+    </ul>
+  </div>
+<div id="set_frame">
+  <h2>投票列表</h2>
+  {% if vote_list %}
+	<table id="vote_list">
+	  <thead>
+      <tr>
+      <th>标题</th>
+	  <div class="simple_info">
+	  <th id="admin_list">发起者</th>
+	  <th id="time_list">时间</th>
+      <th id="stat_list">状态</th>
+	  </div>
+	  </tr>
+	  </thead>
+	  {% for vote in vote_list%}
+	  <tbody>
+	  <tr>
+	  <td><a href="/vote/{{vote.id}}">{{vote.name}}</a></td>
+	  <div class="simple_info">
+      <td>{{vote.admin_user}} </td>
+      <td>{{vote.start}}~<br>{{vote.end}} </td>
+	  <td>
+		{% if not vote.complete %}
+          尚未发布
+		{% elif not vote.finish %}
+		  进行中
+		{% else %}
+		  已结束
+		{% endif %}
+      </tr>
+	  </tbody>
+	  </div>
+	  </li>
+	  {% endfor %}
+    </table>
+  {% else %}
+    <p>无投票</p>
+  {% endif %}
+</div> 
+</body>
+</html>
