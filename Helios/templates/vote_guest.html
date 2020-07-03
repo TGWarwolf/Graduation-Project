@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
 <head>
   <meta charset="UTF-8">
@@ -95,4 +96,103 @@
   
 </div> 
 </body>
+=======
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>投票：{{vote.name}}</title>
+  <script type="text/javascript" src="{{url_for('static',filename='js/Vote.js')}}"></script>
+  <script src="{{url_for('static',filename='js/smEncrypt.min.js')}}"></script>
+	
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/page.css')}}" />
+</head>
+ 
+<body>
+<div id="headline">	
+	<ul>
+    <li><a href="/">首页</a></li>
+    <li><a href="/participate">进行中的投票</a></li>
+    <li><a href="/">关于</a></li>
+	{% if user == "guest" %}
+    <li class="user_info"><a href="/login" >登陆</a></li>
+	{% else %}
+	<li class="user_info"><a href="/logout">用户{{user}}，您好!点此登出</a></li>
+	{% endif %}
+    </ul>
+</div>
+<div id="set_frame">
+  <h2>投票页面</h2>
+  <h3>投票信息</h3>
+  <table class="vote_info">
+  <tr>
+    <th>投票名</th>
+	<td>{{vote.name}}</td>
+  </tr>
+  <tr>
+	<th>描述</th>
+	<td>{{vote.descrip}}</td>
+  </tr>
+  <tr>
+	<th>开始时间</th>
+	<td>{{vote.start}}</td>
+  </tr>
+  <tr>
+	<th>结束时间</th>
+	<td>{{vote.end}}</td>
+  </tr>
+  <tr>
+	<th>发起人</th>
+	<td>{{vote.admin_user}}</td>
+  </tr>
+  </table>
+  {% if questions %}
+    <h3>问题列表</h3>
+    <form class="edit_form">
+	<table class="qst_list">
+	{% for qst in questions %}
+    <tr><th>
+	问题{{loop.index}}.{{qst[0]}}
+	</th></tr>
+      <tbody id="qst{{loop.index0}}">
+	  {% for op in qst[1]%}
+		<tr><td><label for="{{qst[0]}}"><input type="radio" name="{{qst[0]}}" value={{loop.index0}} >{{op}}</label></td></tr>
+	  {% endfor %}
+      </tbody>
+    {% endfor %}
+	</table>
+	{% if ballot %}
+    <p>您的选票信息</p>
+	<table class="my_ballot">
+	  <tr>
+		<th>密文</th>
+		<td>{{ballot.cipher}}</td>
+	  </tr>
+	  <tr>
+		<th>hash值</th>
+		<td>{{ballot.hash}}</td>
+	  </tr>
+	</table>
+      {% if not ballot.is_valid%}
+    <p>可以点击产生选票重新生成</p>
+      {% endif %}
+
+	{% endif %}
+    {% if not vote.finish %}
+      {% if not ballot or not ballot.is_valid%}
+        <input type="button" id="create" class="work_btn" value="产生选票" onclick="create_ballot2({{vote.id}},{{questions|count}},'{{vote.admin_pkey}}');"/>
+	    <input type="button" id="submit" class="work_btn" value="提交选票" onclick="submit_ballot({{vote.id}},'{{ballot!=None}}');"/>
+		
+	  {% endif %}
+	  <input type="button" id="back" class="work_btn" value="返回首页" onclick="window.location.href='/'"/>
+    {% else %}
+      <p>投票已结束</p>
+	  <input type="button" id="back" class="work_btn" value="返回首页" onclick="window.location.href='/'"/>
+    {% endif %}
+    </form>
+  {% endif %}
+  
+  
+</div> 
+</body>
+>>>>>>> 9e0dc46bdeef9af7d86a5beca9d5503fb723d091
 </html>

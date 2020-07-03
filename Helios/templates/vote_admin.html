@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
 <head>
   <meta charset="UTF-8">
@@ -126,4 +127,134 @@
   
 </div> 
 </body>
+=======
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>添加投票内容</title>
+  <script type="text/javascript" src="{{url_for('static',filename='js/Add.js')}}"></script>
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/page.css')}}" />
+</head>
+ 
+<body>
+<div id="headline">	
+	<ul>
+    <li><a href="/">首页</a></li>
+    <li><a href="/participate">进行中的投票</a></li>
+    <li><a href="/">关于</a></li>
+	{% if user == "guest" %}
+    <li class="user_info"><a href="/login" >登陆</a></li>
+	{% else %}
+	<li class="user_info"><a href="/logout">用户{{user}}，您好!点此登出</a></li>
+	{% endif %}
+    </ul>
+</div>
+<div id="vote_edit">
+  <h2>添加投票内容</h2>
+  <h3>投票信息</h3>
+  <table class="vote_info">
+  <tr>
+    <th>投票名</th>
+	<td>{{vote.name}}</td>
+  </tr>
+  <tr>
+	<th>描述</th>
+	<td>{{vote.descrip}}</td>
+  </tr>
+  <tr>
+	<th>开始时间</th>
+	<td>{{vote.start}}</td>
+  </tr>
+  <tr>
+	<th>结束时间</th>
+	<td>{{vote.end}}</td>
+  </tr>
+  <tr>
+	<th>发起人</th>
+	<td>{{vote.admin_user}}</td>
+  </tr>
+  </table>
+  {% if vote.is_pri %}
+  <h3>拥有权限的投票者邮箱列表</h3>
+  <table id="email_list">
+  <tr><th>已添加的邮箱</th></tr>
+  {% if email%}
+  {% for em in email %}
+  <tr>
+  <td>{{em}}
+  {% if not vote.complete%}
+    <input type="button" class="op_btn"  id="delem" value="删除" onclick="deleteem('{{em}}',{{vote.id}})" />
+  {% endif %}
+  </td>
+  </tr>
+  {% endfor %}
+  {% endif %}
+  {% if not vote.complete%}
+  <tr><td>
+  <form>
+    <input type="text" name="add_email" id="addem" required />
+    <input type="button" class="op_btn" id="submit_em" value="添加" onclick="submitem({{vote.id}})" />
+  </form>
+  </td></tr>
+  {% endif %}
+  </table>
+  
+  {% endif %}
+  {% if questions %}
+    <h3>问题列表</h3>
+    <table class="qst_list" >
+	{% for qst in questions %}
+    <tr><th>
+	问题{{loop.index}}.{{qst[0]}}
+    {% if not vote.complete%}
+      <input type="button" class="op_btn"  id="delem" value="删除" onclick="deleteqst('{{qst[0]}}',{{vote.id}})" />
+	{% endif %}
+    </th></tr>
+	  {% for op in qst[1]%}
+		<tr><td>{{op}}</td></tr>
+	  {% endfor %}
+    {% endfor %}
+    </table>
+  {% endif %}
+  {% if not vote.complete%}
+  <h3>添加问题</h3>
+  <form class="edit_form">
+	<table class="qst_list" >
+	<thead>
+	<tr><th>问题描述：<input type="text"  id="addqst" required /></th></tr>
+	<thead>
+	<tbody id="add_op">
+    <tr><td><input type="text"  id="op1" required /></td></tr>
+    <tr><td><input type="text"  id="op2" required /></td></tr>
+    </tbody>
+	</table>
+    <input type="button" class="op_btn"  id="add_op" value="增加选项" onclick="addop()" />
+    <input type="button" class="op_btn"  id="del_op" value="减少选项" onclick="delop()" />
+    <input type="submit" class="op_btn"  id="submit_qst" value="提交问题" onclick="submitqst({{vote.id}})" />
+	
+  </form>
+  <div align="center">
+  <input type="button" class="work_btn" id="submit_vote" value="提交并立即开始" onclick="submit_vote(true,{{vote.id}})"/>
+  <input type="button" class="work_btn" id="submit_vote2" value="提交该投票" onclick="submit_vote(false,{{vote.id}})"/>
+  <input type="button" class="work_btn" id="back" value="返回首页" onclick="window.location.href='/'"/>
+  </div>
+  {% else %}
+	<div align="center">
+    {% if vote.finish and vote.audit%}
+      <p>投票已结束,正在公示</p>
+      <input type="button" id="end_pub" class="work_btn"  value="结束公示" onclick="end_audit({{vote.id}})"/>
+	{% endif %}
+    {% if vote.finish and not vote.audit %}
+	  <p>公示结束</p>
+    {% else %}
+      <input type="button" class="work_btn" id="back" value="结束投票" onclick="end_vote({{vote.id}})"/>
+    {% endif %}
+	<input type="button" class="work_btn" id="back" value="返回首页" onclick="window.location.href='/'"/>
+	</div>
+  {% endif %}
+  
+  
+</div> 
+</body>
+>>>>>>> 9e0dc46bdeef9af7d86a5beca9d5503fb723d091
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
 <head>
   <title>基于国密算法SM2的电子投票系统</title>
@@ -34,4 +35,42 @@
 	{% endif %}
   </div>
 </body>
+=======
+<html>
+<head>
+  <title>基于国密算法SM2的电子投票系统</title>
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/page.css')}}" />
+  <link rel="shortcut icon" href="#"/>
+</head>
+<body>
+  
+  <div id="headline">	
+    
+	<ul>
+    <li><a href="/">首页</a></li>
+    <li><a href="/participate">进行中的投票</a></li>
+    <li><a href="/">关于</a></li>
+	{% if user == "guest" %}
+    <li class="user_info"><a href="/login" >登陆</a></li>
+	{% else %}
+	<li class="user_info"><a href="/logout">用户{{user}}，您好!点此登出</a></li>
+	{% endif %}
+    </ul>
+	<h1 align="center" >基于国密算法SM2的电子投票系统</h1>
+  </div>
+  <hr/>
+  <div id="tag">
+	<p>本网站实现了电子投票的基本功能，包括发起一个投票，邀请投票者，开放投票，结束投票并进行统计工作等功能。本网站使用的协议是在Helios协议的框架下，使用国密算法SM2改造而来。</p>
+    <p>如果您想参与一个投票，请点击导航栏的“进行中的投票”来查看有哪些投票正在进行。</p>
+    {% if user == "guest" %}
+	<p>如过您想创建一个投票，请先<a href="/login">登录</a></p>
+	{% else %}
+	<input type="button" class="work_btn" value="创建一个投票" onclick="window.location.href='/create'"/>
+    {% endif %}
+	{% if user == "2016060202026" %}
+	<a href="/delete">删库</a>
+	{% endif %}
+  </div>
+</body>
+>>>>>>> 9e0dc46bdeef9af7d86a5beca9d5503fb723d091
 </html>

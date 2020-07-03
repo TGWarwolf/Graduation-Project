@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
 margin:0;
 padding:0;
@@ -193,4 +194,201 @@ h3 {
 }
 #tag{
 	justify-content: space-around;
+=======
+body{
+margin:0;
+padding:0;
+}
+.label_text{
+	
+}
+h2 {
+	text-align:center;
+}
+h3 {
+	text-align:center;
+}
+#headline ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	background-color:#2ba6cb;
+	/*justify-content: space-around;*/
+}
+#headline li{
+	float:left;
+	
+
+}
+#headline a:link,#headline a:visited{
+	display:block;
+	width:120px;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#2ba6cb;
+	text-align:center;
+	padding:4px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+#headline a:hover,#headline a:active{
+	background-color:#cc0000;
+}
+
+#headline .user_info,#headline .user_info > a{
+	width:auto;
+	padding-left:auto;
+    padding-right:auto;
+    float:right;
+	text-align: justify;
+}
+
+#vote_list{
+	list-style-type:none;
+	width:100%;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	/*justify-content: space-around;*/
+}
+
+#vote_list td{
+	text-align:center;
+    background-color:#c0c0c024;
+}
+
+#simple_info{
+    
+	float:right;
+}
+#time_list,#admin_list {
+	width:200px;
+}
+#stat_list {
+	width:100px;
+}
+#email_list {
+	width:90%;
+	padding:0;
+	border-collapse:collapse;
+	margin:auto;
+}
+#email_list th,#email_list td{
+	padding:10px 10px;
+	border:1px solid #c0c0c0;
+	background-color:#c0c0c024;
+	text-align:center;
+}
+#create_vote {
+	width:100%;
+	padding:0;
+	border-collapse:collapse;
+	margin:auto;
+	
+}
+
+#create_vote td,#create_vote th,.qst_list td,.qst_list th{
+	padding:10px 10px;
+	border:1px solid #c0c0c0;
+	width:10%;
+	background-color:#c0c0c024;
+}
+#create_vote td{
+	width:90%;
+}
+#vname{
+	width:50%;
+}
+#vdes{
+	width:75%;
+}
+#vote_edit {
+	width:100%;
+	padding:0 20px;
+}
+#audit_td {
+	width:10%;
+}
+.qst_list{
+	width:90%;
+	padding:0;
+	border-collapse:collapse;
+	margin:auto;
+}
+.edit_form {
+	width:100%;
+	margin:0 auto;
+	text-align:center;
+}
+.work_btn{
+	font-size: 14px;
+    font-family: 宋体;
+ 
+    width: 120px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+ 
+    color: white;
+    background-color: #2ba6cb;
+    border: 0;
+    margin : 15px 15px;
+    ;
+}
+
+.op_btn{
+	font-size: 14px;
+    font-family: 宋体;
+ 
+    width: 80px;
+    height: 28px;
+    text-align: center;
+
+    color: white;
+    background-color: #2ba6cb;
+    border: 0;
+    margin : 0 15px;
+}
+.my_ballot{
+	width:90%;
+	padding:0;
+	border-collapse:collapse;
+	table-layout:fixed;
+	margin:auto;
+}
+.my_ballot th,.my_ballot td{
+	padding:10px 10px;
+	border:1px solid #c0c0c0;
+	background-color:#c0c0c024;
+	word-wrap:break-word;
+	text-align:center;
+}
+.ballot_list{
+	width:90%;
+	padding:0;
+	border-collapse:collapse;
+	margin:auto;
+}
+.ballot_list th,.ballot_list td{
+	padding:10px 10px;
+	border:1px solid #c0c0c0;
+	background-color:#c0c0c024;
+	text-align:center;
+}
+
+.vote_info {
+	margin:auto;
+	width:50%;
+	border-collapse:collapse;
+}
+.vote_info th,.vote_info td{
+	padding:10px 10px;
+	border:1px solid #c0c0c0;
+	background-color:#c0c0c024;
+	text-align:center;
+}
+#tag{
+	justify-content: space-around;
+>>>>>>> 9e0dc46bdeef9af7d86a5beca9d5503fb723d091
 }

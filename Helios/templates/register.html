@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--<!DOCTYPE html>-->
 <html>
 <head>
@@ -27,4 +28,35 @@
   </form>
 </div> 
 </body>
+=======
+<!--<!DOCTYPE html>-->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>登录页面</title>
+ 
+  <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/register.css')}}"/>
+  <script type="text/javascript" src="{{url_for('static',filename='js/Register.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static',filename='js/sha256.js')}}"></script>
+</head>
+ 
+<body>
+<div id="login_frame">
+  <!--
+    <p id="image_logo"><img src="images/login/fly.png"></p>
+  -->
+  <p><label id="register_title">用户注册</label></p>
+  <form method="post" action="{{url_for('static',filename='js/Register.js')}}">
+    <p><label class="label_input">账号</label><input type="text" id="username" class="text_field"/></p>
+	<p><label class="label_input">邮箱</label><input type="text" id="email" class="text_field"/></p>
+    <p><label class="label_input">密码</label><input type="password" id="password" class="text_field"/></p>
+	<p><label class="label_input">密码确认</label><input type="password" id="rpassword" class="text_field"/></p>
+    <div id="login_control">
+	  <input type="button" id="btn_reg" value="注册" onclick="register()"/>
+      <input type="button" id="btn_back" value="返回" onclick="window.location.href='/login'"/>
+    </div>
+  </form>
+</div> 
+</body>
+>>>>>>> 9e0dc46bdeef9af7d86a5beca9d5503fb723d091
 </html>
